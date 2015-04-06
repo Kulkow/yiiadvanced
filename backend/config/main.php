@@ -1,0 +1,44 @@
+<?php
+$params = array_merge(
+    require(__DIR__ . '/../../common/config/params.php'),
+    require(__DIR__ . '/../../common/config/params-local.php'),
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
+
+return [
+    'id' => 'app-backend',
+    'basePath' => dirname(__DIR__),
+    'controllerNamespace' => 'backend\controllers',
+    'bootstrap' => ['log'],
+    'components' => [
+        /*'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+        ],*/
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+    ],
+    'params' => $params,
+    'modules'=>[
+        'user-management' => [
+            'class' => 'webvimark\modules\UserManagement\UserManagementModule',
+            /*'on beforeAction'=>function(yii\base\ActionEvent $event) {
+                    if ( $event->action->uniqueId == 'user-management/auth/login' )
+                    {
+                        $event->action->controller->layout = 'loginLayout.php';
+                    };
+                },*/
+        ],
+    ],
+];

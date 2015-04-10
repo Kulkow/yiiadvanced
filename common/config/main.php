@@ -26,6 +26,11 @@ return [
                 }*/
         ],
     ],
+    'modules'=>[
+            'user-management' => [
+                'class' => 'webvimark\modules\UserManagement\UserManagementModule',
+            ],
+        ],
     
 
 ];

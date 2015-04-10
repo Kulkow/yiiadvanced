@@ -12,7 +12,6 @@ class m140608_173539_create_user_table extends Migration
 		{
 			$tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
 		}
-
 		$this->createTable(Yii::$app->getModule('user-management')->user_table, array(
 			'id'                 => 'pk',
 			'username'           => 'string not null',
